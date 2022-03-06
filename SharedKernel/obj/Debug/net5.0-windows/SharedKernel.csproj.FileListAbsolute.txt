@@ -1,0 +1,12 @@
+D:\Practice\DDDInProcessExample\SharedKernel\bin\Debug\net5.0-windows\SharedKernel.deps.json
+D:\Practice\DDDInProcessExample\SharedKernel\bin\Debug\net5.0-windows\SharedKernel.dll
+D:\Practice\DDDInProcessExample\SharedKernel\bin\Debug\net5.0-windows\ref\SharedKernel.dll
+D:\Practice\DDDInProcessExample\SharedKernel\bin\Debug\net5.0-windows\SharedKernel.pdb
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.csproj.AssemblyReference.cache
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.AssemblyInfoInputs.cache
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.AssemblyInfo.cs
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.csproj.CoreCompileInputs.cache
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.dll
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\ref\SharedKernel.dll
+D:\Practice\DDDInProcessExample\SharedKernel\obj\Debug\net5.0-windows\SharedKernel.pdb
