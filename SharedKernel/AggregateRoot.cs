@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SharedKernel
 {
-    public abstract class AggregateRoot<T> : BaseEntity<T>
+    public abstract class AggregateRoot<T> : BaseEntity<T>, IAggregateRoot
     {
         public AggregateRoot(T id) : base(id)
         {

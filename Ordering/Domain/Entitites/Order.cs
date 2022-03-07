@@ -26,7 +26,7 @@ namespace Ordering.Domain.Entitites
             : this(orderId, userId, userName, userEmail, totalPrice, orderStatus, orderDate)
         {
             PaymentData = paymentData;
-            //AddDomainEvent(new OrderPlacedEvent(orderId, totalPrice, orderDate, userEmail, PaymentData));
+            AddDomainEvent(new OrderAddedEvent(this));
         }
 
         /// <summary>
@@ -58,6 +58,11 @@ namespace Ordering.Domain.Entitites
                 var orderItem = new OrderItem(productId, quantity, itemPrice, productName, discount);
                 _orderItems.Add(orderItem);
             }
+        }
+
+        public void Paid()
+        {
+            PaymentData = PaymentData.PaidOrder();
         }
     }
 }

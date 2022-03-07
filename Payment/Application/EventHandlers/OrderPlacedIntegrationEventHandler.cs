@@ -1,7 +1,7 @@
-﻿using Payment.Infrastructure.Persistence;
-using Payment.Infrastructure.Repository;
+﻿using Payment.Infrastructure.Repository;
 using SharedKernel;
 using SharedKernel.IntegrationEvents;
+using System.Threading.Tasks;
 
 namespace Payment.Application.EventHandlers
 {
@@ -9,14 +9,14 @@ namespace Payment.Application.EventHandlers
     {
         private readonly PaymentRepository _paymentRepository;
 
-        public OrderPlacedIntegrationEventHandler()
+        public OrderPlacedIntegrationEventHandler(PaymentRepository paymentRepository)
         {
-            _paymentRepository = new PaymentRepository(new PaymentContext());
+            _paymentRepository = paymentRepository;
         }
 
-        public void Handle(OrderPlacedIntegrationEvent domainEvent)
+        public async Task Handle(OrderPlacedIntegrationEvent domainEvent)
         {
-            var payment = new Domain.Payment(
+            var payment = new Domain.Entities.Payment(
                 domainEvent.OrderId,
                 domainEvent.CardName,
                 domainEvent.CardNumber,
@@ -24,11 +24,8 @@ namespace Payment.Application.EventHandlers
                 domainEvent.CVV,
                 domainEvent.TotalPrice);
 
-            _paymentRepository.Add(payment).GetAwaiter().GetResult();
-
-            // If everything is ok and Payment is added to db
-            // Dispatch OrderPaid integration event to some other bounded context which is interested in that event
-
+            _paymentRepository.Add(payment);
+            await _paymentRepository.SaveChanges();
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Ordering.Application.Services
                 order.AddOrderItem(item.ProductId, item.ProductName, item.Price, item.Discount, item.Quantity);
             }
 
-            await _orderRepository.Add(order);
+            _orderRepository.Add(order);
+            await _orderRepository.SaveChanges();
 
             // we can create in here OrderPlacedIntegrationEvent and dispatch it to Payment context after Order is successfully commited
             // var orderPlacedIntegrationEvent = new OrderPlacedIntegrationEvent ...

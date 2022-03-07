@@ -1,10 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Ordering;
 using Payment;
+using SharedKernel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shopping.UI
@@ -36,6 +34,9 @@ namespace Shopping.UI
             services.AddScoped<Form1>();
             services.AddOrderingServices();
             services.AddPaymentServices();
+
+            ServiceLocator.SetLocatorProvider(services.BuildServiceProvider());
+            DomainEvents.Handler = (type) => ServiceLocator.Current.GetInstance(type);
         }
     }
 }

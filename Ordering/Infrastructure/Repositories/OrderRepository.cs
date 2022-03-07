@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Ordering.Domain.Entitites;
+﻿using Ordering.Domain.Entitites;
 using Ordering.Infrastructure.Persistence;
 using System;
 using System.Linq;
@@ -19,19 +18,18 @@ namespace Ordering.Infrastructure.Repositories
         public Order GetById(Guid orderId)
         {
             var order = _orderContext.Orders
-                .Include(order => order.OrderItems)
+                //.Include(order => order.OrderItems)
                 .FirstOrDefault(o => o.Id.Equals(orderId));
 
             return order;
         }
 
-        public async Task Add(Order order)
+        public void Add(Order order)
         {
             _orderContext.Orders.Add(order);
-
-            await _orderContext.SaveChanges(order);
         }
 
-        //private bool SuccessfullySavedBy(int insertedEntitiesNumber) => insertedEntitiesNumber > 0;
+        public async Task SaveChanges() =>
+            await _orderContext.SaveChanges();
     }
 }

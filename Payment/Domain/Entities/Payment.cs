@@ -1,11 +1,8 @@
-﻿using SharedKernel;
+﻿using Payment.Domain.Events;
+using SharedKernel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Payment.Domain
+namespace Payment.Domain.Entities
 {
     public class Payment : AggregateRoot<int>
     {
@@ -18,6 +15,8 @@ namespace Payment.Domain
             OrderPaid = orderPaid;
             CVV = cVV;
             OrderTotalPrice = orderTotalPrice;
+
+            AddDomainEvent(new PaymentAddedEvent(this));
         }
 
         public Guid OrderId { get; private set; }
@@ -25,6 +24,8 @@ namespace Payment.Domain
         public string CardNumber { get; private set; }
         public bool OrderPaid { get; private set; }
         public int CVV { get; private set; }
-        public decimal OrderTotalPrice { get; set; }
+        public decimal OrderTotalPrice { get; private set; }
+
+        public void Paid() => OrderPaid = true;
     }
 }
