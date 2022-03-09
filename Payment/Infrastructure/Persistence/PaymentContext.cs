@@ -31,8 +31,9 @@ namespace Payment.Infrastructure.Persistence
             if (!successfullySavedToDb)
                 throw new Exception("No rows were affected.");
 
-            // In here dispatch only events that are used by other aggregates inside of executing bounded context
+            // In here dispatch only events that are used by other aggregates inside of executing bounded context; let the event handlers dispatch integration events
             // Or insert it in database and than this event will be picked up by a worker and published to different context or message broker
+            // To Archive transactional behavior inside this context, dispatch domain events before saving the changes/commiting.
             await DispatchDomainEvents(this);
         }
 

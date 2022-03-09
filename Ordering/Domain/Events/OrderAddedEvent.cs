@@ -10,6 +10,6 @@ namespace Ordering.Domain.Events
             Order = order;
         }
 
-        public Order Order { get; set; }
+        public Order Order { get; }
     }
 }
